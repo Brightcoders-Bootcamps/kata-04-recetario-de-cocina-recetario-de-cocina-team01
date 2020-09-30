@@ -1,34 +1,45 @@
-import * as React from 'react';
-//import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-import {SearchBar} from 'react-native-elements';
+ import React from 'react';
+ import { Text, View } from 'react-native';
 
-export default class SearchInput extends React.Component {
-  state = {
-    search: 'This is an initial state',
-  };
+const SearchInput = () => {
+  
+  return (
+    <>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>
 
-  updateSearch = (search) => {
-    this.setState({search});
-  };
-
-  render() {
-    const {search} = this.state;
-
-    return (
-      <Text style={{color: red}}>Esto viene desde searchbar</Text>
-      //   <SearchBar
-      //     placeholder="Type Here..."
-      //     onChangeText={this.updateSearch}
-      //     value={search}
-      //   />
-    );
-  }
+        Try editing me! 🎉
+      </Text>
+    </View>
+    </>
+  );
 }
+
+ export default SearchInput;
+
+//import { SearchBar } from 'react-native-elements';
+
+// export default class App extends React.Component {
+//   state = {
+//     search: '',
+//   };
+
+//   updateSearch = (search) => {
+//     this.setState({ search });
+//   };
+
+//   render() {
+//     const { search } = this.state;
+
+//     return (
+//       // <SearchBar
+//       //   placeholder="Type Here..."
+//       //   onChangeText={this.updateSearch}
+//       //   value={search}
+//       // />
+//       <View>
+//         <Text>Pruebaaaaaaaaaaaaaaa</Text>
+//       </View>
+//     );
+//   }
+// }

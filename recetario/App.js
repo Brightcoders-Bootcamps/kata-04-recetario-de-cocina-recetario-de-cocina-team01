@@ -15,7 +15,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
- import { SearchInput } from './components/searchbar'
+ import SearchInput from './components/searchbar';
 
 import {
   Header,
@@ -26,8 +26,10 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App: () => React$Node = () => {
+  const nombre='nanci';
   return (
     <>
+    
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
@@ -39,11 +41,10 @@ const App: () => React$Node = () => {
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
+          <SearchInput/>
           <View style={styles.body}>
-         
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Recetario</Text>
-              <SearchInput/>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> ejempo.
               </Text>
