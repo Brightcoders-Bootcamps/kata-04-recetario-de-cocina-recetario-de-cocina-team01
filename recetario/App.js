@@ -15,6 +15,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+ import { SearchInput } from './components/searchbar'
 
 import {
   Header,
@@ -39,11 +40,12 @@ const App: () => React$Node = () => {
             </View>
           )}
           <View style={styles.body}>
+         
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
+              <Text style={styles.sectionTitle}>Recetario</Text>
+              <SearchInput/>
               <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
+                Edit <Text style={styles.highlight}>App.js</Text> ejempo.
               </Text>
             </View>
             <View style={styles.sectionContainer}>
