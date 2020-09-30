@@ -114,4 +114,6 @@ const styles = StyleSheet.create({
   },
 });
 
+
+//cambios nan
 export default App;
