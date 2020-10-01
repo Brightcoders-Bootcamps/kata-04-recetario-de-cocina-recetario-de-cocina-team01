@@ -28,6 +28,32 @@ import {
 
 const App: () => React$Node = () => {
   const nombre = 1;
+
+  const DATA1 = [
+    {
+      id: '1',
+      title: 'First Item',
+    },
+    {
+      id: '2',
+      title: 'Second Item',
+    },
+
+  ];
+
+  const DATA2 = [
+    {
+      id: '3',
+      title: 'Elemento 1',
+    },
+    {
+      id: '4',
+      title: 'Elemento 2',
+    },
+
+  ];
+
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -35,11 +61,17 @@ const App: () => React$Node = () => {
         <View style={styles.searchInputStyle}>
           <SearchInput />
         </View>
+
         <View style={styles.searchInputStyle}>
-           <Horizontal/>
+          <Horizontal datos={DATA2} />
         </View>
+
         <View style={styles.searchInputStyle}>
-        <Text>
+          <Horizontal datos={DATA1} />
+        </View>
+
+        <View style={styles.searchInputStyle}>
+          <Text>
             RECENT
           </Text>
           <SearchInput />
@@ -50,9 +82,9 @@ const App: () => React$Node = () => {
 };
 
 const styles = StyleSheet.create({
- 
-  searchInputStyle:{ 
-    padding: 30,  
+
+  searchInputStyle: {
+    padding: 30,
     color: "#fff",
     backgroundColor: "#eaeaea"
   },
