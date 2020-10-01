@@ -1,17 +1,24 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, ScrollView } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, ScrollView, Image } from 'react-native';
 
 
 
-const Item = ({ title }) => (
+const Item = ({ title,imag }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
+    {/* <Image
+        style={styles.tinyLogo}
+        source={imag}
+      /> */}
   </View>
 );
 
-const Horizontal = () => {
+const Horizontal = (props) => {
   const renderItem = ({ item }) => (
-    <Item title={item.title} />
+    <Item 
+    title={item.title}
+    //imag={item.imag}
+     />
   );
 
   return (

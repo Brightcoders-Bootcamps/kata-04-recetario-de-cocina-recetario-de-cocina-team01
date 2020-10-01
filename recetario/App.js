@@ -33,10 +33,12 @@ const App: () => React$Node = () => {
     {
       id: '1',
       title: 'First Item',
+      imag: './images/discada.jpeg'
     },
     {
       id: '2',
       title: 'Second Item',
+      imag: './images/verdes.jpeg'
     },
 
   ];
@@ -45,10 +47,12 @@ const App: () => React$Node = () => {
     {
       id: '3',
       title: 'Elemento 1',
+      imag: './images/mole.jpeg'
     },
     {
       id: '4',
       title: 'Elemento 2',
+      imag: './images/tlayuda.jpeg'
     },
 
   ];
