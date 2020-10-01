@@ -16,6 +16,7 @@ import {
   StatusBar,
 } from 'react-native';
 import SearchInput from './components/searchbar';
+import Horizontal from './components/HorizontalList';
 
 import {
   Header,
@@ -33,7 +34,15 @@ const App: () => React$Node = () => {
       <SafeAreaView>
         <View style={styles.searchInputStyle}>
           <SearchInput />
-          
+        </View>
+        <View style={styles.searchInputStyle}>
+           <Horizontal/>
+        </View>
+        <View style={styles.searchInputStyle}>
+        <Text>
+            RECENT
+          </Text>
+          <SearchInput />
         </View>
       </SafeAreaView>
     </>
