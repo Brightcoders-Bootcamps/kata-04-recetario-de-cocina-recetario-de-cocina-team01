@@ -1,19 +1,32 @@
- import React from 'react';
- import { Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Text, TextInput, View } from 'react-native';
 
-const SearchInput = () => {
-  
-  return (
-    <>
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>
 
-        Try editing me! 🎉
-      </Text>
-    </View>
-    </>
-  );
+class SearchInput extends Component{
+
+  render(){
+    return (
+      <>
+        <TextInput 
+            placeholder='BASIC INPUT'
+          />
+      </> )
+  }
 }
 
- export default SearchInput;
 
+// const SearchInput = (props) => {
+//   return (
+//     <>
+//       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//         <Text>
+//           Try editing me! 🎉 {props.name}
+//         </Text>
+//         <Text>{props.otroprop}</Text>
+//         <Text>{props.otrotro}</Text>
+//       </View>
+//     </>
+//   );
+// }
+
+export default SearchInput;
