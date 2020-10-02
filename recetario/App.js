@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import SearchInput from './components/searchbar';
 import Horizontal from './components/HorizontalList';
+import CardM from './components/cardItem';
 
 import {
   Header,
@@ -64,6 +65,7 @@ const App: () => React$Node = () => {
       <SafeAreaView>
         <View style={styles.searchInputStyle}>
           <SearchInput />
+          <CardM/>
         </View>
 
         <View style={styles.searchInputStyle}>
