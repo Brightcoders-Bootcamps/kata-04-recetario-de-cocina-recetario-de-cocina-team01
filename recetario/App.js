@@ -16,7 +16,9 @@ import {
   StatusBar,
 } from 'react-native';
 import SearchInput from './components/searchbar';
-import Horizontal from './components/HorizontalList';
+// import Horizontal from './components/HorizontalList';
+import CardM from './components/CardM';
+
 
 import {
   Header,
@@ -33,12 +35,12 @@ const App: () => React$Node = () => {
     {
       id: '1',
       title: 'First Item',
-      imag: './images/discada.jpeg'
+      imag: '/images/discada.jpg'
     },
     {
       id: '2',
       title: 'Second Item',
-      imag: './images/verdes.jpeg'
+      imag: '/images/verdes.jpeg'
     },
 
   ];
@@ -47,12 +49,12 @@ const App: () => React$Node = () => {
     {
       id: '3',
       title: 'Elemento 1',
-      imag: './images/mole.jpeg'
+      imag: '/images/mole.jpeg'
     },
     {
       id: '4',
       title: 'Elemento 2',
-      imag: './images/tlayuda.jpeg'
+      imag: '/images/tlayuda.jpeg'
     },
 
   ];
@@ -64,14 +66,19 @@ const App: () => React$Node = () => {
       <SafeAreaView>
         <View style={styles.searchInputStyle}>
           <SearchInput />
+          <CardM
+            className={classes.media}
+            image="/images/discada.jpg"
+            title="Paella dish"
+          />
         </View>
 
         <View style={styles.searchInputStyle}>
-          <Horizontal datos={DATA2} />
+          {/* <Horizontal datos={DATA2} /> */}
         </View>
 
         <View style={styles.searchInputStyle}>
-          <Horizontal datos={DATA1} />
+          {/* <Horizontal datos={DATA1} /> */}
         </View>
 
         <View style={styles.searchInputStyle}>
