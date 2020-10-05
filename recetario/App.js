@@ -66,11 +66,12 @@ const App: () => React$Node = () => {
         </View>
 
         <View style={styles.searchInputStyle}>
-          <Horizontal datos={DATA2} />
+          {/* <Horizontal datos={DATA2} /> */}
+          <CardM />
         </View>
 
         <View style={styles.searchInputStyle}>
-          <Horizontal datos={DATA1} />
+          {/* <Horizontal datos={DATA1} /> */}
         </View>
 
         <View style={styles.searchInputStyle}>
