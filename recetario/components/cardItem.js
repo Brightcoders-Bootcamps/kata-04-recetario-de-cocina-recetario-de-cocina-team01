@@ -1,50 +1,74 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native'
-import { ListItem, Button, Icon, Card } from 'react-native-elements'
+import {
+  SafeAreaView,
+  View,
+  FlatList,
+  StyleSheet,
+  Text,
+  StatusBar,
+  Image,
+} from 'react-native';
 
-const users = [
-    {
-        name: 'brynn',
-        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
-    },
-    {
-        name: '2',
-        avatar: '../images/mole.jpeg'
-    },
-    {
-        name: '3',
-        avatar: '../images/verdes.jpg'
-    },
-    {
-        name: '4',
-        avatar: '../images/discada.jpg'
-    },
-]
+const properties = [
+  {
+    id: '1',
+    t: 'Chilaquiles',
+    ruta: require('../images/chilakiles.jpeg'),
+  },
+  {
+    id: '2',
+    t: 'Discada',
+    ruta: require('../images/discada.jpg'),
+  },
+  {
+    id: '3',
+    t: 'Mole',
+    ruta: require('../images/mole.jpeg'),
+  },
+  {
+    id: '4',
+    t: 'Molletos',
+    ruta: require('../images/molletes.jpeg'),
+  },
+];
+
+const Item = ({title, ruta}) => (
+  <View style={styles.item}>
+    <Image style={styles.img} source={ruta} />
+    <Text style={styles.title}> {title} </Text>
+  </View>
+);
 
 class CardM extends React.Component {
+  render() {
+    const renderItem = ({item}) => <Item title={item.t} ruta={item.ruta} />;
 
-    render() {
-        return (
-            // implemented without image without header, using ListItem component
-            // implemented without image without header, using ListItem component
-            <Card containerStyle={{ padding: 0 }} >
-                {
-                    users.map((u, i) => {
-                        return (
-                            <ListItem
-                                key={i}
-                                roundAvatar
-                                title={u.name}
-                                leftAvatar={{ source: { uri: u.avatar } }}
-                            />
-                        );
-                    })
-                }
-            </Card>
-
-            
-        )
-    }
+    return (
+      <FlatList
+        horizontal={true}
+        data={properties}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
+    );
+  }
 }
+
+const styles = StyleSheet.create({
+  item: {
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 15,
+    color: '#FFFFFF',
+  },
+  img: {
+    width: 90,
+    height: 100,
+    borderRadius: 8,
+  },
+});
 
 export default CardM;

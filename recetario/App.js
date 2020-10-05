@@ -34,38 +34,35 @@ const App: () => React$Node = () => {
     {
       id: '1',
       title: 'First Item',
-      imag: './images/discada.jpeg'
+      imag: './images/discada.jpeg',
     },
     {
       id: '2',
       title: 'Second Item',
-      imag: './images/verdes.jpeg'
+      imag: './images/verdes.jpeg',
     },
-
   ];
 
   const DATA2 = [
     {
       id: '3',
       title: 'Elemento 1',
-      imag: './images/mole.jpeg'
+      imag: './images/mole.jpeg',
     },
     {
       id: '4',
       title: 'Elemento 2',
-      imag: './images/tlayuda.jpeg'
+      imag: './images/tlayuda.jpeg',
     },
-
   ];
-
 
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <View style={styles.searchInputStyle}>
-          <SearchInput />
-          <CardM/>
+          {/* <SearchInput /> */}
+          <CardM />
         </View>
 
         <View style={styles.searchInputStyle}>
@@ -77,10 +74,8 @@ const App: () => React$Node = () => {
         </View>
 
         <View style={styles.searchInputStyle}>
-          <Text>
-            RECENT
-          </Text>
-          <SearchInput />
+          <Text>RECENT</Text>
+          {/* <SearchInput /> */}
         </View>
       </SafeAreaView>
     </>
@@ -88,11 +83,10 @@ const App: () => React$Node = () => {
 };
 
 const styles = StyleSheet.create({
-
   searchInputStyle: {
     padding: 30,
-    color: "#fff",
-    backgroundColor: "#eaeaea"
+    color: '#fff',
+    backgroundColor: '#eaeaea',
   },
   scrollView: {
     backgroundColor: Colors.lighter,
@@ -131,7 +125,6 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
 
 //cambios nan
 export default App;
