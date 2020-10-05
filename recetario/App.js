@@ -1,3 +1,4 @@
+
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -16,9 +17,8 @@ import {
   StatusBar,
 } from 'react-native';
 import SearchInput from './components/searchbar';
-// import Horizontal from './components/HorizontalList';
-import CardM from './components/CardM';
-
+import Horizontal from './components/HorizontalList';
+import CardM from './components/cardItem';
 
 import {
   Header,
@@ -35,46 +35,43 @@ const App: () => React$Node = () => {
     {
       id: '1',
       title: 'First Item',
-      imag: '/images/discada.jpg'
+      imag: './images/discada.jpeg',
     },
     {
       id: '2',
       title: 'Second Item',
-      imag: '/images/verdes.jpeg'
+      imag: './images/verdes.jpeg',
     },
-
   ];
 
   const DATA2 = [
     {
       id: '3',
       title: 'Elemento 1',
-      imag: '/images/mole.jpeg'
+      imag: './images/mole.jpeg',
     },
     {
       id: '4',
       title: 'Elemento 2',
-      imag: '/images/tlayuda.jpeg'
+      imag: './images/tlayuda.jpeg',
     },
-
   ];
-
 
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
+        
         <View style={styles.searchInputStyle}>
           <SearchInput />
-          <CardM
-            className={classes.media}
-            image="/images/discada.jpg"
-            title="Paella dish"
-          />
+          <Text style={styles.title}>Trending</Text>
+          <CardM />
         </View>
 
         <View style={styles.searchInputStyle}>
+          <Text style={styles.title}>Recent</Text>
           {/* <Horizontal datos={DATA2} /> */}
+          <CardM />
         </View>
 
         <View style={styles.searchInputStyle}>
@@ -82,10 +79,8 @@ const App: () => React$Node = () => {
         </View>
 
         <View style={styles.searchInputStyle}>
-          <Text>
-            RECENT
-          </Text>
-          <SearchInput />
+          <Text>RECENT</Text>
+          {/* <SearchInput /> */}
         </View>
       </SafeAreaView>
     </>
@@ -93,11 +88,14 @@ const App: () => React$Node = () => {
 };
 
 const styles = StyleSheet.create({
-
+  title:{
+    color: '#CE1C6F',
+    fontSize:28,
+  },  
   searchInputStyle: {
     padding: 30,
-    color: "#fff",
-    backgroundColor: "#eaeaea"
+    color: '#fff',
+    backgroundColor: '#282828',
   },
   scrollView: {
     backgroundColor: Colors.lighter,
@@ -136,7 +134,6 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
 
 //cambios nan
 export default App;
