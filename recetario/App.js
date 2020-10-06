@@ -7,10 +7,10 @@
  */
 
 import * as React from 'react';
-import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import CardM from './components/cardItem';
 //import Navigator from './Navigators/Navigator';
 import Details from './Screens/Detail';
@@ -19,20 +19,25 @@ const Stack = createStackNavigator();
 
 
 
-function Home({navigation}) {
+function Home({ navigation }) {
   // Para (){
   //  const {n} = navigation.navigate('Details');
   // }
+  let goToDetails = () => navigation.navigate('Details', {
+    itemId: 86,
+    otherParam: 'anything you want here',
+  });
+
   return (
     //CUANDO ES COMPONENTE SEPARADO ESTA FUNCION RECIBE UN {navigation}
     <View style={styles.Padre}>
       <View style={styles.Hijo2}>
         <TextInput placeholder="Buscar comida" />
         <Text style={styles.TextColor}> TRENDING </Text>
-        <CardM />
+        <CardM gTD={goToDetails} />
         <Button
           title="Go to Details"
-          onPress={() => navigation.navigate('Details')}
+          onPress={goToDetails}
         />
       </View>
       <View style={styles.Hijo3}>
@@ -43,10 +48,13 @@ function Home({navigation}) {
   );
 }
 
-function DetailsScreen({navigation}) {
+function DetailsScreen({ route, navigation }) {
+  const { itemId, otherParam } = route.params;
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
+      <Text>itemId: {JSON.stringify(itemId)}</Text>
+      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
     </View>
   );
 }
@@ -57,6 +65,7 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="CardM" component={CardM} />
       </Stack.Navigator>
     </NavigationContainer>
   );

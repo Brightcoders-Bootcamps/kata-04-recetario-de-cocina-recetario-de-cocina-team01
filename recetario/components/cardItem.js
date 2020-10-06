@@ -8,6 +8,8 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const properties = [
   {
@@ -32,25 +34,21 @@ const properties = [
   },
 ];
 
-function CardM({navigation}) {
-  const Item = ({title, ruta, navigation}) => (
-    <View
-      style={styles.item}
-      onStartShouldSetResponder={() => alert(`Pantalla ${title}`)}>
-      <Image style={styles.img} source={ruta} />
-      <Text style={styles.title}> {title} </Text>
-    </View>
-  );
-
-  const renderItem = ({item, navigation}) => (
-    <Item title={item.t} ruta={item.ruta} v={navigation} />
-  );
-
+function CardM(props) {
   return (
     <FlatList
       horizontal={true}
       data={properties}
-      renderItem={renderItem}
+      renderItem={
+        ({ item, index }) => (
+          < View
+            style={styles.item}
+            onStartShouldSetResponder={props.gTD}>
+            <Image style={styles.img} source={item.ruta} />
+            <Text style={styles.title}> {item.t} </Text>
+          </View>
+        )
+      }
       keyExtractor={(item) => item.id}
     />
   );
