@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Button, Text, Image, StyleSheet } from 'react-native';
+import { View, Button, Text, Image, StyleSheet,FlatList } from 'react-native';
 
 export default function Detail({ route, navigation }) {
   const { t, ruta, ingredients} = route.params;
@@ -17,7 +17,7 @@ export default function Detail({ route, navigation }) {
             ({ item, index }) => (
               < View
                 style={styles.item}>
-                <Text style={styles.title}> {item[index]} </Text>
+                <Text style={styles.title}> {item} </Text>
               </View>
             )
           }

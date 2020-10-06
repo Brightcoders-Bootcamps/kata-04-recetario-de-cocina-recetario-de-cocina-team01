@@ -16,7 +16,47 @@ import CardM from './components/cardItem';
 import Details from './Screens/Detail';
 
 const Stack = createStackNavigator();
-
+const properties = [
+  {
+    id: '1',
+    t: 'Chilaquiles',
+    ingredients:["8 tomates verdes", "1/4 de cebollas", "4 Chiles serranos", "Cilantro", "Pollo"],
+    ruta: require('./images/chilakiles.jpeg'),
+  },
+  {
+    id: '2',
+    t: 'Discada',
+    ingredients:["Aceite vegetal", "Tocino", "Chorizo", "Carne de cerdo", "Cebolla blanca", "Tomate"],
+    ruta: require('./images/discada.jpg'),
+  },
+  {
+    id: '3',
+    t: 'Mole',
+    ingredients:["Chile ancho", "Pan de yema", "Pasas", "Almendras", "Cacahuate", "Pollo"],
+    ruta: require('./images/mole.jpeg'),
+  },
+  {
+    id: '4',
+    t: 'Molletes',
+    ingredients:["Frijol", "Queso", "Jitomate", "Cebolla", "Pan bolillo"],
+    ruta: require('./images/molletes.jpeg'),
+  },
+];
+const propertiesLike = [
+  {
+    id: '1',
+    t: 'Chilaquiles',
+    ingredients:["8 tomates verdes", "1/4 de cebollas", "4 Chiles serranos", "Cilantro", "Pollo"],
+    ruta: require('./images/chilakiles.jpeg'),
+  },
+  {
+    id: '2',
+    t: 'Discada',
+    ingredients:["Aceite vegetal", "Tocino", "Chorizo", "Carne de cerdo", "Cebolla blanca", "Tomate"],
+    ruta: require('./images/discada.jpg'),
+  },
+  
+];
 
 
 function Home({ navigation }) {
@@ -33,11 +73,11 @@ function Home({ navigation }) {
       <View style={styles.Hijo2}>
         <TextInput placeholder="Buscar comida" />
         <Text style={styles.TextColor}> TRENDING </Text>
-        <CardM gTD={goToDetails} />
+        <CardM data={properties} gTD={goToDetails} />
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
-        <CardM gTD={goToDetails} />
+        <CardM data={propertiesLike} gTD={goToDetails} />
       </View>
     </View>
   );
