@@ -43,7 +43,7 @@ function CardM(props) {
         ({ item, index }) => (
           < View
             style={styles.item}
-            onStartShouldSetResponder={props.gTD}>
+            onStartShouldSetResponder={()=>props.gTD(item)}>
             <Image style={styles.img} source={item.ruta} />
             <Text style={styles.title}> {item.t} </Text>
           </View>

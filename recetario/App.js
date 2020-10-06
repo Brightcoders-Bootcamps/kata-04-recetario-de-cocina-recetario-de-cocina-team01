@@ -23,10 +23,9 @@ function Home({ navigation }) {
   // Para (){
   //  const {n} = navigation.navigate('Details');
   // }
-  let goToDetails = () => navigation.navigate('Details', {
-    itemId: 86,
-    otherParam: 'anything you want here',
-  });
+  function goToDetails(objeto){
+    navigation.navigate('Details', objeto);
+  }
 
   return (
     //CUANDO ES COMPONENTE SEPARADO ESTA FUNCION RECIBE UN {navigation}
@@ -35,14 +34,10 @@ function Home({ navigation }) {
         <TextInput placeholder="Buscar comida" />
         <Text style={styles.TextColor}> TRENDING </Text>
         <CardM gTD={goToDetails} />
-        <Button
-          title="Go to Details"
-          onPress={goToDetails}
-        />
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
-        <CardM />
+        <CardM gTD={goToDetails} />
       </View>
     </View>
   );
