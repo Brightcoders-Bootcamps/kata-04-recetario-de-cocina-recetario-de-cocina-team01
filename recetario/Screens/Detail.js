@@ -1,26 +1,24 @@
 import * as React from 'react';
-import { View, Button, Text, Image, StyleSheet,FlatList } from 'react-native';
+import {View, Button, Text, Image, StyleSheet, FlatList} from 'react-native';
 
-export default function Detail({ route, navigation }) {
-  const { t, ruta, ingredients} = route.params;
+export default function Detail({route, navigation}) {
+  const {t, ruta, ingredients, section} = route.params;
   return (
     <>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Image style={styles.img} source={ruta} />
+        <Text> {section} </Text>
         <Text style={styles.title}> {t} </Text>
-        
+
         <FlatList
           horizontal={false}
           data={ingredients}
-          renderItem={
-            ({ item, index }) => (
-              < View
-                style={styles.item}>
-                <Text style={styles.title}> {item} </Text>
-              </View>
-            )
-          }
+          renderItem={({item, index}) => (
+            <View style={styles.item}>
+              <Text style={styles.title}> {item} </Text>
+            </View>
+          )}
+          showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item.id}
         />
       </View>

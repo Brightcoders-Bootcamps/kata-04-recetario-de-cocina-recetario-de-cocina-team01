@@ -1,4 +1,4 @@
-/**
+ /**
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
@@ -7,10 +7,10 @@
  */
 
 import * as React from 'react';
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import CardM from './components/cardItem';
 //import Navigator from './Navigators/Navigator';
 import Details from './Screens/Detail';
@@ -20,50 +20,85 @@ const properties = [
   {
     id: '1',
     t: 'Chilaquiles',
-    ingredients:["8 tomates verdes", "1/4 de cebollas", "4 Chiles serranos", "Cilantro", "Pollo"],
+    ingredients: [
+      '8 tomates verdes',
+      '1/4 de cebollas',
+      '4 Chiles serranos',
+      'Cilantro',
+      'Pollo',
+    ],
     ruta: require('./images/chilakiles.jpeg'),
+    section: 'Trending',
   },
   {
     id: '2',
     t: 'Discada',
-    ingredients:["Aceite vegetal", "Tocino", "Chorizo", "Carne de cerdo", "Cebolla blanca", "Tomate"],
+    ingredients: [
+      'Aceite vegetal',
+      'Tocino',
+      'Chorizo',
+      'Carne de cerdo',
+      'Cebolla blanca',
+      'Tomate',
+    ],
     ruta: require('./images/discada.jpg'),
+    section: 'Trending',
   },
   {
     id: '3',
     t: 'Mole',
-    ingredients:["Chile ancho", "Pan de yema", "Pasas", "Almendras", "Cacahuate", "Pollo"],
+    ingredients: [
+      'Chile ancho',
+      'Pan de yema',
+      'Pasas',
+      'Almendras',
+      'Cacahuate',
+      'Pollo',
+    ],
     ruta: require('./images/mole.jpeg'),
+    section: 'Trending',
   },
   {
     id: '4',
     t: 'Molletes',
-    ingredients:["Frijol", "Queso", "Jitomate", "Cebolla", "Pan bolillo"],
+    ingredients: ['Frijol', 'Queso', 'Jitomate', 'Cebolla', 'Pan bolillo'],
     ruta: require('./images/molletes.jpeg'),
+    section: 'Trending',
   },
 ];
 const propertiesLike = [
   {
     id: '1',
     t: 'Chilaquiles',
-    ingredients:["8 tomates verdes", "1/4 de cebollas", "4 Chiles serranos", "Cilantro", "Pollo"],
+    ingredients: [
+      '8 tomates verdes',
+      '1/4 de cebollas',
+      '4 Chiles serranos',
+      'Cilantro',
+      'Pollo',
+    ],
     ruta: require('./images/chilakiles.jpeg'),
   },
   {
     id: '2',
     t: 'Discada',
-    ingredients:["Aceite vegetal", "Tocino", "Chorizo", "Carne de cerdo", "Cebolla blanca", "Tomate"],
+    ingredients: [
+      'Aceite vegetal',
+      'Tocino',
+      'Chorizo',
+      'Carne de cerdo',
+      'Cebolla blanca',
+      'Tomate',
+    ],
     ruta: require('./images/discada.jpg'),
   },
-  
 ];
 
-
-function Home({ navigation }) {
+function Home({navigation}) {
   // Para (){
   //  const {n} = navigation.navigate('Details');
   // }
-  function goToDetails(objeto){
+  function goToDetails(objeto) {
     navigation.navigate('Details', objeto);
   }
 
@@ -73,20 +108,20 @@ function Home({ navigation }) {
       <View style={styles.Hijo2}>
         <TextInput placeholder="Buscar comida" />
         <Text style={styles.TextColor}> TRENDING </Text>
-        <CardM data={properties} gTD={goToDetails} />
+        <CardM namesection="Trending" data={properties} gTD={goToDetails} />
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
-        <CardM data={propertiesLike} gTD={goToDetails} />
+        <CardM namesection="Recent" data={propertiesLike} gTD={goToDetails} />
       </View>
     </View>
   );
 }
 
-function DetailsScreen({ route, navigation }) {
-  const { itemId, otherParam } = route.params;
+function DetailsScreen({route, navigation}) {
+  const {itemId, otherParam} = route.params;
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Details Screen</Text>
       <Text>itemId: {JSON.stringify(itemId)}</Text>
       <Text>otherParam: {JSON.stringify(otherParam)}</Text>

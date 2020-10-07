@@ -7,27 +7,25 @@ import {
   Text,
   StatusBar,
   Image,
+  TouchableOpacity,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
 function CardM(props) {
   return (
     <FlatList
       horizontal={true}
       data={props.data}
-      renderItem={
-        ({ item, index }) => (
-          < View
-            style={styles.item}
-            onStartShouldSetResponder={()=>props.gTD(item)}>
+      renderItem={({item, index}) => (
+        <View style={styles.item}>
+          <TouchableOpacity activeOpacity={0.5} onPress={() => props.gTD(item)}>
             <Image style={styles.img} source={item.ruta} />
-            <Text style={styles.title}> {item.t} </Text>
-          </View>
-        )
-      }
+          </TouchableOpacity>
+          <Text style={styles.title}> {item.t} </Text>
+        </View>
+      )}
+      showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => item.id}
     />
   );
