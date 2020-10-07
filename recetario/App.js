@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import * as React from 'react';
+import React, { useState } from 'react';
 import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,7 +16,7 @@ import CardM from './components/cardItem';
 import Details from './Screens/Detail';
 
 const Stack = createStackNavigator();
-const properties = [
+const recepees = [
   {
     id: '1',
     t: 'Chilaquiles',
@@ -66,7 +66,8 @@ const properties = [
     section: 'Trending',
   },
 ];
-const propertiesLike = [
+
+const favourites = [
   {
     id: '1',
     t: 'Chilaquiles',
@@ -78,6 +79,7 @@ const propertiesLike = [
       'Pollo',
     ],
     ruta: require('./images/chilakiles.jpeg'),
+    section: 'Favourites',
   },
   {
     id: '2',
@@ -91,10 +93,13 @@ const propertiesLike = [
       'Tomate',
     ],
     ruta: require('./images/discada.jpg'),
+    section: 'Favourites',
   },
 ];
 
+
 function Home({navigation}) {
+  const [section, setSection] = useState(0);
   // Para (){
   //  const {n} = navigation.navigate('Details');
   // }
@@ -102,17 +107,20 @@ function Home({navigation}) {
     navigation.navigate('Details', objeto);
   }
 
+  function addFavourite(item){
+    favourites.push(item);
+  }
   return (
     //CUANDO ES COMPONENTE SEPARADO ESTA FUNCION RECIBE UN {navigation}
     <View style={styles.Padre}>
       <View style={styles.Hijo2}>
         <TextInput placeholder="Buscar comida" />
         <Text style={styles.TextColor}> TRENDING </Text>
-        <CardM namesection="Trending" data={properties} gTD={goToDetails} />
+        <CardM namesection="Trending" data={recepees} gTD={goToDetails} prueba={addFavourite} />
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
-        <CardM namesection="Recent" data={propertiesLike} gTD={goToDetails} />
+        <CardM namesection="Recent" data={favourites} gTD={goToDetails} prueba={addFavourite} />
       </View>
     </View>
   );
