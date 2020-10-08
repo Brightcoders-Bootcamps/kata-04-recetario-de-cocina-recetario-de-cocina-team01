@@ -6,7 +6,8 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import * as React  from 'react';
+import {useState} from 'react';
 import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -98,17 +99,25 @@ const favourites = [
 ];
 
 function Home({navigation, route}) {
+
   const [section, setSection] = useState(0);
   // Para (){
   //  const {n} = navigation.navigate('Details');
   // }
-const { post, item } = route.params;  
+ 
 
 React.useEffect(() => {
+
+  
     if (route.params?.post) {
-      alert(post.item.section);
-      alert(post.item.t);s
+      
+      const { post
+      } = route.params; 
+
+      alert(post.section);
+      alert(post.t);
     }
+
   }, [route.params?.post]);
 
   function goToDetails(objeto) {
