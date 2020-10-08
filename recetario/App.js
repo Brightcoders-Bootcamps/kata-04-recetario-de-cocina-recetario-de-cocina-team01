@@ -1,4 +1,4 @@
- /**
+/**
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -97,17 +97,24 @@ const favourites = [
   },
 ];
 
-
-function Home({navigation}) {
+function Home({navigation, route}) {
   const [section, setSection] = useState(0);
   // Para (){
   //  const {n} = navigation.navigate('Details');
   // }
+
+  React.useEffect(() => {
+    if (route.params?.post) {
+      alert(post.item.section);
+      alert(post.item.t);s
+    }
+  }, [route.params?.post]);
+
   function goToDetails(objeto) {
     navigation.navigate('Details', objeto);
   }
 
-  function addFavourite(item){
+  function addFavourite(item) {
     favourites.push(item);
   }
   return (
@@ -116,11 +123,21 @@ function Home({navigation}) {
       <View style={styles.Hijo2}>
         <TextInput placeholder="Buscar comida" />
         <Text style={styles.TextColor}> TRENDING </Text>
-        <CardM namesection="Trending" data={recepees} gTD={goToDetails} prueba={addFavourite} />
+        <CardM
+          namesection="Trending"
+          data={recepees}
+          gTD={goToDetails}
+          prueba={addFavourite}
+        />
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
-        <CardM namesection="Recent" data={favourites} gTD={goToDetails} prueba={addFavourite} />
+        <CardM
+          namesection="Recent"
+          data={favourites}
+          gTD={goToDetails}
+          prueba={addFavourite}
+        />
       </View>
     </View>
   );

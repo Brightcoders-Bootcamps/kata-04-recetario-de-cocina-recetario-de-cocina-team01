@@ -16,7 +16,10 @@ export default function Detail({ route, navigation },props) {
     item.ruta=ruta;
     item.ingredients= ingredients,
     item.section="Favourites";
-    alert(item.section);
+    navigation.navigate('Home', { post: item });
+
+
+    //alert(item.section);
   }
   
   return (
