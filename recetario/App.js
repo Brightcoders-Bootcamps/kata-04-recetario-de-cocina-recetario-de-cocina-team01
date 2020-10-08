@@ -102,8 +102,9 @@ function Home({navigation, route}) {
   // Para (){
   //  const {n} = navigation.navigate('Details');
   // }
+const { post, item } = route.params;  
 
-  React.useEffect(() => {
+React.useEffect(() => {
     if (route.params?.post) {
       alert(post.item.section);
       alert(post.item.t);s
