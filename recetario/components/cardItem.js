@@ -7,7 +7,8 @@ import {
   Text,
   StatusBar,
   Image,
-  TouchableOpacity,Button
+  TouchableOpacity,
+  Button,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -22,7 +23,7 @@ function CardM(props) {
           <TouchableOpacity activeOpacity={0.5} onPress={() => props.gTD(item)}>
             <Image style={styles.img} source={item.ruta} />
           </TouchableOpacity>
-          <Text> {item.section} </Text>
+
           <Text style={styles.title}> {item.t} </Text>
         </View>
       )}

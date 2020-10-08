@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import * as React  from 'react';
+import * as React from 'react';
 import {useState} from 'react';
 import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
 
@@ -68,65 +68,29 @@ const recepees = [
   },
 ];
 
-const favourites = [
-  {
-    id: '1',
-    t: 'Chilaquiles',
-    ingredients: [
-      '8 tomates verdes',
-      '1/4 de cebollas',
-      '4 Chiles serranos',
-      'Cilantro',
-      'Pollo',
-    ],
-    ruta: require('./images/chilakiles.jpeg'),
-    section: 'Favourites',
-  },
-  {
-    id: '2',
-    t: 'Discada',
-    ingredients: [
-      'Aceite vegetal',
-      'Tocino',
-      'Chorizo',
-      'Carne de cerdo',
-      'Cebolla blanca',
-      'Tomate',
-    ],
-    ruta: require('./images/discada.jpg'),
-    section: 'Favourites',
-  },
-];
+const favourites = [];
 
 function Home({navigation, route}) {
+  const [section, setSection] = useState([]);
 
-  const [section, setSection] = useState(0);
-  // Para (){
-  //  const {n} = navigation.navigate('Details');
-  // }
- 
-
-React.useEffect(() => {
-
-  
+  React.useEffect(() => {
     if (route.params?.post) {
-      
-      const { post
-      } = route.params; 
+      const {post} = route.params;
 
-      alert(post.section);
-      alert(post.t);
+      favourites.push(post);
+
+      setSection(favourites);
+      // alert(post.t);
     }
-
   }, [route.params?.post]);
 
   function goToDetails(objeto) {
     navigation.navigate('Details', objeto);
   }
 
-  function addFavourite(item) {
-    favourites.push(item);
-  }
+  // function addFavourite(item) {
+  //   favourites.push(item);
+  // }
   return (
     //CUANDO ES COMPONENTE SEPARADO ESTA FUNCION RECIBE UN {navigation}
     <View style={styles.Padre}>
@@ -137,16 +101,16 @@ React.useEffect(() => {
           namesection="Trending"
           data={recepees}
           gTD={goToDetails}
-          prueba={addFavourite}
+          // prueba={addFavourite}
         />
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
         <CardM
           namesection="Recent"
-          data={favourites}
+          data={section}
           gTD={goToDetails}
-          prueba={addFavourite}
+          // prueba={addFavourite}
         />
       </View>
     </View>
