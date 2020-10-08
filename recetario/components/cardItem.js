@@ -23,7 +23,6 @@ function CardM(props) {
           <TouchableOpacity activeOpacity={0.5} onPress={() => props.gTD(item)}>
             <Image style={styles.img} source={item.ruta} />
           </TouchableOpacity>
-
           <Text style={styles.title}> {item.t} </Text>
         </View>
       )}

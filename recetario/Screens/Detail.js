@@ -2,9 +2,10 @@ import * as React from 'react';
 import {View, Button, Text, Image, StyleSheet, FlatList} from 'react-native';
 
 export default function Detail({route, navigation}) {
-  const {t, ruta, ingredients, section, prueba} = route.params;
+  const {id,t, ruta, ingredients, section, prueba,index} = route.params;
 
   const item = {
+    id: id,
     t: t,
     ruta: ruta,
     ingredients: ingredients,
@@ -12,10 +13,15 @@ export default function Detail({route, navigation}) {
   };
 
   function changeCategorie() {
-    item.section = 'Favourites';
-    navigation.navigate('Home', {post: item});
-
-    //alert(item.section);
+    let fav;
+    if(item.section=='Trending'){
+      item.section = 'Favourites';
+      fav=true;
+    }else if(item.section=='Favourites'){
+      item.section = 'Trending';
+      fav=false;
+    }
+    navigation.navigate('Home', {post: item,fav});
   }
 
   return (
@@ -35,7 +41,7 @@ export default function Detail({route, navigation}) {
             </View>
           )}
           showsVerticalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(index) => index}
         />
       </View>
     </>

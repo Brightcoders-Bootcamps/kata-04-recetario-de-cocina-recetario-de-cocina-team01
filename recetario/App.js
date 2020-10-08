@@ -67,20 +67,35 @@ const recepees = [
     section: 'Trending',
   },
 ];
-
 const favourites = [];
 
 function Home({navigation, route}) {
-  const [section, setSection] = useState([]);
+  const [trending, setTrending] = useState(recepees);
+  const [favs, setFavs] = useState(favourites);
 
   React.useEffect(() => {
     if (route.params?.post) {
-      const {post} = route.params;
-
-      favourites.push(post);
-
-      setSection(favourites);
-      // alert(post.t);
+      const {post,fav} = route.params;
+      if(fav==true){
+        for(let i=0;i<recepees.length;i++){
+          if(recepees[i].id==post.id){
+            recepees.splice(i,1);
+            favourites.push(post);
+            setFavs(favourites);
+            setTrending(recepees);
+          }
+        }
+      }else{
+        // for(let i=0;i<favourites.length;i++){
+        //   if(favourites[i].id==post.id){
+        //     favourites.splice(i,1);
+        //     //alert("eliminando el index: "+i);
+        //     recepees.push(post);
+        //     setTrending(recepees);
+        //     setFavs(favourites);
+        //   }
+        // }
+      }
     }
   }, [route.params?.post]);
 
@@ -99,7 +114,7 @@ function Home({navigation, route}) {
         <Text style={styles.TextColor}> TRENDING </Text>
         <CardM
           namesection="Trending"
-          data={recepees}
+          data={trending}
           gTD={goToDetails}
           // prueba={addFavourite}
         />
@@ -108,7 +123,7 @@ function Home({navigation, route}) {
         <Text style={styles.TextColor}>RECENT</Text>
         <CardM
           namesection="Recent"
-          data={section}
+          data={favs}
           gTD={goToDetails}
           // prueba={addFavourite}
         />
