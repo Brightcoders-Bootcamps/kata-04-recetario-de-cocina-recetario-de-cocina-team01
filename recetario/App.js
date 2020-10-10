@@ -77,25 +77,19 @@ function Home({navigation, route}) {
   React.useEffect(() => {
     if (route.params?.post) {
       const {post, fav} = route.params;
+      const itemToFind = (element) => element.id == post.id;
+      let index;
       if (fav == true) {
-        for (let i = 0; i < recepees.length; i++) {
-          if (recepees[i].id == post.id) {
-            recepees.splice(i, 1);
-            favourites.push(post);
-            setFavs(favourites);
-            setTrending(recepees);
-          }
-        }
+        index = recepees.findIndex(itemToFind);
+        recepees.splice(index, 1);
+        favourites.push(post);
       } else {
-        for (let i = 0; i < favourites.length; i++) {
-          if (favourites[i].id == post.id) {
-            favourites.splice(i, 1);
-            recepees.push(post);
-            setTrending(recepees);
-            setFavs(favourites);
-          }
-        }
+        index = favourites.findIndex(itemToFind);
+        favourites.splice(index, 1);
+        recepees.push(post);
       }
+      setFavs(favourites);
+      setTrending(recepees);
     }
   }, [route.params?.post]);
 
@@ -112,9 +106,7 @@ function Home({navigation, route}) {
       <SearchInput/>
       <View style={styles.Hijo2}>
         <Text style={styles.TextColor}> TRENDING </Text>
-        <CardM
-          h={120}
-          w={120}
+        <CardM h={120} w={120}
           namesection="Trending"
           data={trending}
           gTD={goToDetails}
@@ -122,25 +114,12 @@ function Home({navigation, route}) {
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
-        <CardM
-          h={220}
-          w={180}
+        <CardM h={220} w={180}
           namesection="Recent"
           data={favs}
           gTD={goToDetails}
         />
       </View>
-    </View>
-  );
-}
-
-function DetailsScreen({route, navigation}) {
-  const {itemId, otherParam} = route.params;
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Details Screen</Text>
-      <Text>itemId: {JSON.stringify(itemId)}</Text>
-      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
     </View>
   );
 }
