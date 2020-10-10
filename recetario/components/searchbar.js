@@ -14,7 +14,7 @@ class SearchInput extends Component {
             placeholder='What do you want to eat?'
             placeholderTextColor="#fff"
           />
-          <Image style={{ height: 25, width: 25, marginRight: 10 }} source={require('../images/search.png')} />
+          <Image style={{ height: 25, width: 25, marginRight: 10 }} source={require('../images/microfono.png')} />
         </View>
       </View>
     )
