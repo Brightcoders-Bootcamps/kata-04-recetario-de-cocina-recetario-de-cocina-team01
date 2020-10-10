@@ -7,13 +7,13 @@ import {
   StyleSheet,
   FlatList,
   ImageBackground,
-  Dimensions,
+  Dimensions,TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons';
 
-export default function Detail({route, navigation}) {
-  const {id, t, ruta, ingredients, section, prueba, index} = route.params;
+export default function Detail({ route, navigation }) {
+  const { id, t, ruta, ingredients, section, prueba, index } = route.params;
 
+  let fav;
   const item = {
     id: id,
     t: t,
@@ -23,7 +23,6 @@ export default function Detail({route, navigation}) {
   };
 
   function changeCategorie() {
-    let fav;
     if (item.section == 'Trending') {
       item.section = 'Favourites';
       fav = true;
@@ -31,7 +30,10 @@ export default function Detail({route, navigation}) {
       item.section = 'Trending';
       fav = false;
     }
-    navigation.navigate('Home', {post: item, fav});
+  }
+
+  function goBack(){
+    navigation.navigate('Home', { post: item, fav });
   }
 
   return (
@@ -40,12 +42,23 @@ export default function Detail({route, navigation}) {
         <View style={styles.ImageSon}>
           <ImageBackground source={ruta} style={styles.img}></ImageBackground>
           <View style={styles.Icons}>
-            <View>
-              <Text style={styles.textColorImag}> Aqui van los iconos</Text>
+            <View style={{ flex: 1, flexDirection: "row", justifyContent: 'space-between', paddingHorizontal: '5%' }}>
+              <View style={{ flex: 1 }}>
+                <TouchableOpacity activeOpacity={0.5} onPress={goBack}>
+                  <Image style={{ height: 35, width: 35 }} source={require('../images/cross.png')} />
+                </TouchableOpacity>
+
+              </View>
+              <View style={{ flex: 1, flexDirection: "row", justifyContent: 'space-around', justifyContent: 'flex-end' }}>
+                <Image style={{ height: 35, width: 35, marginRight: 20 }} source={require('../images/share.png')} />
+                <TouchableOpacity activeOpacity={0.5} onPress={changeCategorie}>
+                  <Image style={{ height: 35, width: 35 }} source={require('../images/like.png')} />
+                </TouchableOpacity>
+              </View>
             </View>
             <View>
-              <Text style={styles.textColorImag}> {section} </Text>
-              <Text style={styles.textColorImag}> {t} </Text>
+              <Text style={[styles.textColorImag, { fontSize: 27 }]}> {section} </Text>
+              <Text style={[styles.textColorImag, { fontSize: 35 }]}> {t} </Text>
             </View>
           </View>
         </View>
@@ -54,7 +67,7 @@ export default function Detail({route, navigation}) {
           <FlatList
             horizontal={false}
             data={ingredients}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <View style={styles.item}>
                 <Text style={styles.titleList}> {item} </Text>
               </View>
@@ -70,7 +83,7 @@ export default function Detail({route, navigation}) {
 const styles = StyleSheet.create({
   father: {
     flex: 1,
-    backgroundColor: '#444244',
+    backgroundColor: '#282828',
   },
   ImageSon: {
     flex: 1,
@@ -99,13 +112,14 @@ const styles = StyleSheet.create({
   },
   textColorImag: {
     color: 'white',
+    fontWeight: '500'
   },
   Icons: {
     flex: 1,
     justifyContent: 'flex-start',
     alignContent: 'flex-start',
     justifyContent: 'space-between',
-    marginTop: '-50%',
+    marginTop: '-55%',
     paddingLeft: 15,
   },
 });

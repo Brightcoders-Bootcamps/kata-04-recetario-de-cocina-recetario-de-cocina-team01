@@ -13,6 +13,7 @@ import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import CardM from './components/cardItem';
+import SearchInput from './components/searchbar';
 //import Navigator from './Navigators/Navigator';
 import Details from './Screens/Detail';
 
@@ -109,8 +110,8 @@ function Home({navigation, route}) {
   return (
     //CUANDO ES COMPONENTE SEPARADO ESTA FUNCION RECIBE UN {navigation}
     <View style={styles.Padre}>
+      <SearchInput/>
       <View style={styles.Hijo2}>
-        <TextInput placeholder="Buscar comida" />
         <Text style={styles.TextColor}> TRENDING </Text>
         <CardM
           namesection="Trending"
@@ -172,19 +173,21 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     overflow: 'scroll',
-    backgroundColor: '#444244',
+    backgroundColor: '#282828',
   },
   Hijo1: {
     flex: 1,
   },
   Hijo2: {
     flex: 1,
+    paddingTop:'10%'
   },
   Hijo3: {
     flex: 1,
   },
   TextColor: {
     color: '#D920A9',
+    fontSize:27
   },
 });
 
