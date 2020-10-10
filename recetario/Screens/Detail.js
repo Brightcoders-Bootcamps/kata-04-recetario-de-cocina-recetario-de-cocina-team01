@@ -38,7 +38,8 @@ export default function Detail({route, navigation}) {
     <>
       <View style={styles.father}>
         <View style={styles.ImageSon}>
-          <ImageBackground source={ruta} style={styles.img}>
+          <ImageBackground source={ruta} style={styles.img}></ImageBackground>
+          <View style={styles.Icons}>
             <View>
               <Text style={styles.textColorImag}> Aqui van los iconos</Text>
             </View>
@@ -46,16 +47,16 @@ export default function Detail({route, navigation}) {
               <Text style={styles.textColorImag}> {section} </Text>
               <Text style={styles.textColorImag}> {t} </Text>
             </View>
-          </ImageBackground>
+          </View>
         </View>
-        <View style={styles.ImageSon}>
-          <Button title="titulo" onPress={() => changeCategorie()}></Button>
+        <View style={styles.ImageSon2}>
+          {/* <Button title="titulo" onPress={() => changeCategorie()}></Button> */}
           <FlatList
             horizontal={false}
             data={ingredients}
             renderItem={({item, index}) => (
               <View style={styles.item}>
-                <Text style={styles.title}> {item} </Text>
+                <Text style={styles.titleList}> {item} </Text>
               </View>
             )}
             showsVerticalScrollIndicator={false}
@@ -69,19 +70,24 @@ export default function Detail({route, navigation}) {
 const styles = StyleSheet.create({
   father: {
     flex: 1,
-    justifyContent: 'center',
     backgroundColor: '#444244',
   },
   ImageSon: {
     flex: 1,
   },
+  ImageSon2: {
+    flex: 1,
+    paddingTop: 60,
+  },
 
   item: {
-    padding: 5,
     marginVertical: 8,
     marginHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#7A6F7A',
+    paddingBottom: 20,
   },
-  title: {
+  titleList: {
     fontSize: 15,
     color: 'white',
   },
@@ -90,9 +96,16 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height / 2,
     opacity: 0.3,
-    justifyContent: 'space-between',
   },
   textColorImag: {
     color: 'white',
+  },
+  Icons: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignContent: 'flex-start',
+    justifyContent: 'space-between',
+    marginTop: '-50%',
+    paddingLeft: 15,
   },
 });

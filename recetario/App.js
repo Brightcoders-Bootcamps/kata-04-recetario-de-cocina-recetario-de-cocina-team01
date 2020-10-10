@@ -1,4 +1,4 @@
-/**
+ /**
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
@@ -35,7 +35,7 @@ const recepees = [
     id: '2',
     t: 'Discada',
     ingredients: [
-      'Aceite vegetal',
+      'Aceite vegetal    1 cucharada',
       'Tocino',
       'Chorizo',
       'Carne de cerdo',
