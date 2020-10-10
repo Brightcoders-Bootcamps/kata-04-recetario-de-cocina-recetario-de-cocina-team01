@@ -42,17 +42,16 @@ export default function Detail({ route, navigation }) {
         <View style={styles.ImageSon}>
           <ImageBackground source={ruta} style={styles.img}></ImageBackground>
           <View style={styles.Icons}>
-            <View style={{ flex: 1, flexDirection: "row", justifyContent: 'space-between', paddingHorizontal: '5%' }}>
+            <View style={[styles.cont,{justifyContent: 'space-between', paddingHorizontal: '5%' }]}>
               <View style={{ flex: 1 }}>
                 <TouchableOpacity activeOpacity={0.5} onPress={goBack}>
-                  <Image style={{ height: 35, width: 35 }} source={require('../images/cross.png')} />
+                  <Image style={styles.iconclass} source={require('../images/cross.png')} />
                 </TouchableOpacity>
-
               </View>
-              <View style={{ flex: 1, flexDirection: "row", justifyContent: 'space-around', justifyContent: 'flex-end' }}>
-                <Image style={{ height: 35, width: 35, marginRight: 20 }} source={require('../images/share.png')} />
+              <View style={[styles.cont,{ justifyContent: 'space-around', justifyContent: 'flex-end' }]}>
+                <Image style={[styles.iconclass,{ marginRight: 20}]} source={require('../images/share.png')} />
                 <TouchableOpacity activeOpacity={0.5} onPress={changeCategorie}>
-                  <Image style={{ height: 35, width: 35 }} source={require('../images/like.png')} />
+                  <Image style={styles.iconclass} source={require('../images/like.png')} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -81,6 +80,12 @@ export default function Detail({ route, navigation }) {
   );
 }
 const styles = StyleSheet.create({
+  cont:{ flex: 1, flexDirection: "row",
+ },
+  iconclass:{
+    height: 35, width: 35,
+  },
+
   father: {
     flex: 1,
     backgroundColor: '#282828',

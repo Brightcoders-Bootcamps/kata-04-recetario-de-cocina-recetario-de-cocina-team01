@@ -72,7 +72,7 @@ const favourites = [];
 
 function Home({navigation, route}) {
   const [trending, setTrending] = useState(recepees);
-  const [favs, setFavs] = useState(favourites);
+  const [favs, setFavs] = useState([]);
 
   React.useEffect(() => {
     if (route.params?.post) {
@@ -90,7 +90,6 @@ function Home({navigation, route}) {
         for (let i = 0; i < favourites.length; i++) {
           if (favourites[i].id == post.id) {
             favourites.splice(i, 1);
-            //alert("eliminando el index: "+i);
             recepees.push(post);
             setTrending(recepees);
             setFavs(favourites);
@@ -114,19 +113,21 @@ function Home({navigation, route}) {
       <View style={styles.Hijo2}>
         <Text style={styles.TextColor}> TRENDING </Text>
         <CardM
+          h={120}
+          w={120}
           namesection="Trending"
           data={trending}
           gTD={goToDetails}
-          // prueba={addFavourite}
         />
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
         <CardM
+          h={220}
+          w={180}
           namesection="Recent"
           data={favs}
           gTD={goToDetails}
-          // prueba={addFavourite}
         />
       </View>
     </View>

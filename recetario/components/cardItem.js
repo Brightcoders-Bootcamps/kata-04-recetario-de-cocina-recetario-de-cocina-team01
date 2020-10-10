@@ -21,7 +21,7 @@ function CardM(props) {
       renderItem={({item, index}) => (
         <View style={styles.item}>
           <TouchableOpacity activeOpacity={0.5} onPress={() => props.gTD(item)}>
-            <Image style={styles.img} source={item.ruta} />
+            <Image style={{height:props.h,width:props.w,borderRadius: 8}} source={item.ruta} />
           </TouchableOpacity>
           <Text style={styles.title}> {item.t} </Text>
         </View>
@@ -34,18 +34,14 @@ function CardM(props) {
 
 const styles = StyleSheet.create({
   item: {
-    padding: 20,
+    padding: 5,
     marginVertical: 8,
     marginHorizontal: 16,
   },
   title: {
-    fontSize: 15,
+    marginTop:15,
+    fontSize: 20,
     color: '#FFFFFF',
-  },
-  img: {
-    width: 90,
-    height: 100,
-    borderRadius: 8,
   },
 });
 
