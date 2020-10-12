@@ -24,6 +24,8 @@ export default function Detail({route, navigation}) {
   } = route.params;
 
   let fav;
+  let heart=require('../images/like.png');
+
   const item = {
     id: id,
     t: t,
@@ -37,9 +39,12 @@ export default function Detail({route, navigation}) {
     if (item.section == 'Trending') {
       item.section = 'Favourites';
       fav = true;
+      heart=require('../images/gusta-contorno.png');
+
     } else if (item.section == 'Favourites') {
       item.section = 'Trending';
       fav = false;
+      heart=require('../images/like.png');
     }
   }
 
@@ -76,10 +81,7 @@ export default function Detail({route, navigation}) {
                   source={require('../images/share.png')}
                 />
                 <TouchableOpacity activeOpacity={0.5} onPress={changeCategorie}>
-                  <Image
-                    style={styles.iconclass}
-                    source={require('../images/like.png')}
-                  />
+                  <Image style={styles.iconclass} source={heart} />
                 </TouchableOpacity>
               </View>
             </View>
