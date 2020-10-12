@@ -7,11 +7,21 @@ import {
   StyleSheet,
   FlatList,
   ImageBackground,
-  Dimensions,TouchableOpacity,
+  Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 
-export default function Detail({ route, navigation }) {
-  const { id, t, ruta, ingredients, section, prueba, index } = route.params;
+export default function Detail({route, navigation}) {
+  const {
+    id,
+    t,
+    ruta,
+    ingredients,
+    section,
+    prueba,
+    index,
+    portions,
+  } = route.params;
 
   let fav;
   const item = {
@@ -20,6 +30,7 @@ export default function Detail({ route, navigation }) {
     ruta: ruta,
     ingredients: ingredients,
     section: section,
+    portions: portions,
   };
 
   function changeCategorie() {
@@ -32,8 +43,8 @@ export default function Detail({ route, navigation }) {
     }
   }
 
-  function goBack(){
-    navigation.navigate('Home', { post: item, fav });
+  function goBack() {
+    navigation.navigate('Home', {post: item, fav});
   }
 
   return (
@@ -42,33 +53,57 @@ export default function Detail({ route, navigation }) {
         <View style={styles.ImageSon}>
           <ImageBackground source={ruta} style={styles.img}></ImageBackground>
           <View style={styles.Icons}>
-            <View style={[styles.cont,{justifyContent: 'space-between', paddingHorizontal: '5%' }]}>
-              <View style={{ flex: 1 }}>
+            <View
+              style={[
+                styles.cont,
+                {justifyContent: 'space-between', paddingHorizontal: '5%'},
+              ]}>
+              <View style={{flex: 1}}>
                 <TouchableOpacity activeOpacity={0.5} onPress={goBack}>
-                  <Image style={styles.iconclass} source={require('../images/cross.png')} />
+                  <Image
+                    style={styles.iconclass}
+                    source={require('../images/cross.png')}
+                  />
                 </TouchableOpacity>
               </View>
-              <View style={[styles.cont,{ justifyContent: 'space-around', justifyContent: 'flex-end' }]}>
-                <Image style={[styles.iconclass,{ marginRight: 20}]} source={require('../images/share.png')} />
+              <View
+                style={[
+                  styles.cont,
+                  {justifyContent: 'space-around', justifyContent: 'flex-end'},
+                ]}>
+                <Image
+                  style={[styles.iconclass, {marginRight: 20}]}
+                  source={require('../images/share.png')}
+                />
                 <TouchableOpacity activeOpacity={0.5} onPress={changeCategorie}>
-                  <Image style={styles.iconclass} source={require('../images/like.png')} />
+                  <Image
+                    style={styles.iconclass}
+                    source={require('../images/like.png')}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
             <View>
-              <Text style={[styles.textColorImag, { fontSize: 27 }]}> {section} </Text>
-              <Text style={[styles.textColorImag, { fontSize: 35 }]}> {t} </Text>
+              <Text style={[styles.textColorImag, {fontSize: 20}]}>
+                {' '}
+                {section}{' '}
+              </Text>
+              <Text style={[styles.textColorImag, {fontSize: 30}]}> {t} </Text>
             </View>
           </View>
         </View>
         <View style={styles.ImageSon2}>
-          {/* <Button title="titulo" onPress={() => changeCategorie()}></Button> */}
+          <View style={styles.titleListServing}>
+            <Text style={styles.titleListServingText}>Ingredients</Text>
+            <Text style={styles.titleList}>for {portions} serving</Text>
+          </View>
           <FlatList
             horizontal={false}
             data={ingredients}
-            renderItem={({ item, index }) => (
+            renderItem={({item, index}) => (
               <View style={styles.item}>
-                <Text style={styles.titleList}> {item} </Text>
+                <Text style={styles.titleList}> {item.ingredient} </Text>
+                <Text style={styles.titleList}> {item.quantity} </Text>
               </View>
             )}
             showsVerticalScrollIndicator={false}
@@ -80,10 +115,10 @@ export default function Detail({ route, navigation }) {
   );
 }
 const styles = StyleSheet.create({
-  cont:{ flex: 1, flexDirection: "row",
- },
-  iconclass:{
-    height: 35, width: 35,
+  cont: {flex: 1, flexDirection: 'row'},
+  iconclass: {
+    height: 27,
+    width: 27,
   },
 
   father: {
@@ -99,6 +134,8 @@ const styles = StyleSheet.create({
   },
 
   item: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginVertical: 8,
     marginHorizontal: 16,
     borderBottomWidth: 1,
@@ -109,6 +146,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'white',
   },
+  titleListServing: {
+    paddingLeft: 15,
+    marginBottom: 15,
+  },
+  titleListServingText: {
+    fontSize: 20,
+    color: 'white',
+  },
   img: {
     flex: 1,
     width: Dimensions.get('window').width,
@@ -117,7 +162,7 @@ const styles = StyleSheet.create({
   },
   textColorImag: {
     color: 'white',
-    fontWeight: '500'
+    fontWeight: '500',
   },
   Icons: {
     flex: 1,

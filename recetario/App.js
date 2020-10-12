@@ -1,4 +1,4 @@
- /**
+/**
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
@@ -22,51 +22,67 @@ const recepees = [
   {
     id: '1',
     t: 'Chilaquiles',
+    portions: '3',
     ingredients: [
-      '8 tomates verdes',
-      '1/4 de cebollas',
-      '4 Chiles serranos',
-      'Cilantro',
-      'Pollo',
+      {
+        ingredient: 'frijoles',
+        quantity: '1/2 kg',
+      },
+      {
+        ingredient: 'cebollas',
+        quantity: '2 pzs',
+      },
+      {
+        ingredient: 'Chiles serranos',
+        quantity: '8 pzs',
+      },
+      {
+        ingredient: 'Cilantro',
+        quantity: '1 pzs',
+      },
+      {
+        ingredient: 'Pollo',
+        quantity: '1 kg',
+      },
     ],
     ruta: require('./images/chilakiles.jpeg'),
-    section: 'Trending',
+    section: 'TRENDING',
   },
-  {
-    id: '2',
-    t: 'Discada',
-    ingredients: [
-      'Aceite vegetal    1 cucharada',
-      'Tocino',
-      'Chorizo',
-      'Carne de cerdo',
-      'Cebolla blanca',
-      'Tomate',
-    ],
-    ruta: require('./images/discada.jpg'),
-    section: 'Trending',
-  },
-  {
-    id: '3',
-    t: 'Mole',
-    ingredients: [
-      'Chile ancho',
-      'Pan de yema',
-      'Pasas',
-      'Almendras',
-      'Cacahuate',
-      'Pollo',
-    ],
-    ruta: require('./images/mole.jpeg'),
-    section: 'Trending',
-  },
-  {
-    id: '4',
-    t: 'Molletes',
-    ingredients: ['Frijol', 'Queso', 'Jitomate', 'Cebolla', 'Pan bolillo'],
-    ruta: require('./images/molletes.jpeg'),
-    section: 'Trending',
-  },
+  // {
+  //   id: '2',
+  //   t: 'Discada',
+  //   ingredients: [
+  //     'Aceite vegetal    1 cucharada',
+  //     'Tocino',
+  //     'Chorizo',
+  //     'Carne de cerdo',
+  //     'Cebolla blanca',
+  //     'Tomate',
+  //   ],
+  //   ruta: require('./images/discada.jpg'),
+  //   section: 'TRENDING',
+  // },
+  // {
+  //   id: '3',
+  //   t: 'Mole',
+  //   ingredients: [
+  //     'Chile ancho',
+  //     'Pan de yema',
+  //     'Pasas',
+  //     'Almendras',
+  //     'Cacahuate',
+  //     'Pollo',
+  //   ],
+  //   ruta: require('./images/mole.jpeg'),
+  //   section: 'TRENDING',
+  // },
+  // {
+  //   id: '4',
+  //   t: 'Molletes',
+  //   ingredients: ['Frijol', 'Queso', 'Jitomate', 'Cebolla', 'Pan bolillo'],
+  //   ruta: require('./images/molletes.jpeg'),
+  //   section: 'TRENDING',
+  // },
 ];
 const favourites = [];
 
@@ -103,10 +119,12 @@ function Home({navigation, route}) {
   return (
     //CUANDO ES COMPONENTE SEPARADO ESTA FUNCION RECIBE UN {navigation}
     <View style={styles.Padre}>
-      <SearchInput/>
+      <SearchInput />
       <View style={styles.Hijo2}>
         <Text style={styles.TextColor}> TRENDING </Text>
-        <CardM h={120} w={120}
+        <CardM
+          h={120}
+          w={120}
           namesection="Trending"
           data={trending}
           gTD={goToDetails}
@@ -114,7 +132,9 @@ function Home({navigation, route}) {
       </View>
       <View style={styles.Hijo3}>
         <Text style={styles.TextColor}>RECENT</Text>
-        <CardM h={220} w={180}
+        <CardM
+          h={220}
+          w={180}
           namesection="Recent"
           data={favs}
           gTD={goToDetails}
@@ -160,14 +180,14 @@ const styles = StyleSheet.create({
   },
   Hijo2: {
     flex: 1,
-    paddingTop:'10%'
+    paddingTop: '10%',
   },
   Hijo3: {
     flex: 1,
   },
   TextColor: {
     color: '#D920A9',
-    fontSize:27
+    fontSize: 24,
   },
 });
 
