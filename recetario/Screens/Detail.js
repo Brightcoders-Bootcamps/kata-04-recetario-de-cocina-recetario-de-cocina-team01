@@ -13,9 +13,6 @@ import {
 import {useState} from 'react';
 
 export default function Detail({route, navigation}) {
-  let fav=null;
-  //let heart=require('../images/like.png');
-  const [likeIcon, setIcon] = useState(require('../images/like.png'));
   const {
     id,
     t,
@@ -26,7 +23,6 @@ export default function Detail({route, navigation}) {
     index,
     portions,
   } = route.params;
-
   const item = {
     id: id,
     t: t,
@@ -35,24 +31,29 @@ export default function Detail({route, navigation}) {
     section: section,
     portions: portions,
   };
+  let heart;
+  if(item.section=='TRENDING'){
+    heart=require('../images/like.png');
+  }else{
+    heart=require('../images/gusta-contorno.png');
+  }
+  const [likeIcon, setIcon] = useState(heart);
+  const [fav, setFav] = useState(null);
 
   function changeCategorie() {
     if (item.section == 'TRENDING') {
-      item.section = 'FAVOURITES';
-      fav = true;
+      setFav(true);
       heart=require('../images/gusta-contorno.png');
     } else if (item.section == 'FAVOURITES') {
-      item.section = 'TRENDING';
-      fav = false;
+      setFav(false);
       heart=require('../images/like.png');
     }
-    //setIcon(heart);
+    setIcon(heart);
   }
 
   function goBack() {
     navigation.navigate('Home', {post: item, fav});
   }
-
   return (
     <>
       <View style={styles.father}>
