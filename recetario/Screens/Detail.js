@@ -10,8 +10,12 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
+import {useState} from 'react';
 
 export default function Detail({route, navigation}) {
+  let fav=null;
+  //let heart=require('../images/like.png');
+  const [likeIcon, setIcon] = useState(require('../images/like.png'));
   const {
     id,
     t,
@@ -23,9 +27,6 @@ export default function Detail({route, navigation}) {
     portions,
   } = route.params;
 
-  let fav;
-  let heart=require('../images/like.png');
-
   const item = {
     id: id,
     t: t,
@@ -36,16 +37,16 @@ export default function Detail({route, navigation}) {
   };
 
   function changeCategorie() {
-    if (item.section == 'Trending') {
-      item.section = 'Favourites';
+    if (item.section == 'TRENDING') {
+      item.section = 'FAVOURITES';
       fav = true;
       heart=require('../images/gusta-contorno.png');
-
-    } else if (item.section == 'Favourites') {
-      item.section = 'Trending';
+    } else if (item.section == 'FAVOURITES') {
+      item.section = 'TRENDING';
       fav = false;
       heart=require('../images/like.png');
     }
+    //setIcon(heart);
   }
 
   function goBack() {
@@ -81,7 +82,7 @@ export default function Detail({route, navigation}) {
                   source={require('../images/share.png')}
                 />
                 <TouchableOpacity activeOpacity={0.5} onPress={changeCategorie}>
-                  <Image style={styles.iconclass} source={heart} />
+                  <Image style={styles.iconclass} source={likeIcon} />
                 </TouchableOpacity>
               </View>
             </View>

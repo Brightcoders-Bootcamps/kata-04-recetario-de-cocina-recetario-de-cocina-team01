@@ -156,17 +156,19 @@ function Home({navigation, route}) {
       const {post, fav} = route.params;
       const itemToFind = (element) => element.id == post.id;
       let index;
-      if (fav == true) {
-        index = recepees.findIndex(itemToFind);
-        recepees.splice(index, 1);
-        favourites.push(post);
-      } else {
-        index = favourites.findIndex(itemToFind);
-        favourites.splice(index, 1);
-        recepees.push(post);
+      if (fav != null){
+        if (fav == true) {
+          index = recepees.findIndex(itemToFind);
+          recepees.splice(index, 1);
+          favourites.push(post);
+        } else {
+          index = favourites.findIndex(itemToFind);
+          favourites.splice(index, 1);
+          recepees.push(post);
+        }
+        setFavs(favourites);
+        setTrending(recepees);
       }
-      setFavs(favourites);
-      setTrending(recepees);
     }
   }, [route.params?.post]);
 
