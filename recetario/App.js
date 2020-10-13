@@ -7,42 +7,43 @@
  */
 
 import * as React from 'react';
-import {useState} from 'react';
-import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import CardM from './components/cardItem';
 import SearchInput from './components/searchbar';
-import {datageneral} from './components/ListData';
+import { datageneral } from './components/ListData';
 import Details from './Screens/Detail';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Stack = createStackNavigator();
 let localReceepes = datageneral.recepees;
 let favourites = [];
 
-function Home({navigation, route}) {
+function Home({ navigation, route }) {
   const [trending, setTrending] = useState(localReceepes);
   const [favs, setFavs] = useState([]);
 
   React.useEffect(() => {
     if (route.params?.post) {
-      const {post, fav} = route.params;
+      const { post, fav } = route.params;
       let newArray;
       let newTrending;
       if (fav != null) {
         if (fav == true) {
           newTrending = trending.filter((elemento) => elemento.id !== post.id);
           post.section = 'FAVOURITES';
-           favourites.push(post);
-           newArray = favourites;
-           localReceepes = newTrending;
+          favourites.push(post);
+          newArray = favourites;
+          localReceepes = newTrending;
         } else {
           newArray = favourites.filter((elemento) => elemento.id !== post.id);
           post.section = 'TRENDING';
           localReceepes.push(post);
           newTrending = localReceepes;
-           favourites = newArray;
+          favourites = newArray;
         }
         setFavs(newArray);
         setTrending(newTrending);
@@ -56,26 +57,28 @@ function Home({navigation, route}) {
   return (
     <View style={styles.Padre}>
       <SearchInput />
-      <View style={styles.Hijo2}>
-        <Text style={styles.TextColor}> TRENDING </Text>
-        <CardM
-          h={120}
-          w={120}
-          namesection="TRENDING"
-          data={trending}
-          gTD={goToDetails}
-        />
-      </View>
-      <View style={styles.Hijo3}>
-        <Text style={styles.TextColor}>RECENT</Text>
-        <CardM
-          h={220}
-          w={180}
-          namesection="FAVOURITES"
-          data={favs}
-          gTD={goToDetails}
-        />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.Hijo2}>
+          <Text style={styles.TextColor}> TRENDING </Text>
+          <CardM
+            h={120}
+            w={120}
+            namesection="TRENDING"
+            data={trending}
+            gTD={goToDetails}
+          />
+        </View>
+        <View style={styles.Hijo3}>
+          <Text style={styles.TextColor}>RECENT</Text>
+          <CardM
+            h={220}
+            w={180}
+            namesection="FAVOURITES"
+            data={favs}
+            gTD={goToDetails}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 }
