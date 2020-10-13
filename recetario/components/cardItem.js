@@ -30,7 +30,7 @@ function CardM(props) {
         </View>
       )}
       showsHorizontalScrollIndicator={false}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) =>  props.namesection + item.id}
     />
   );
 }

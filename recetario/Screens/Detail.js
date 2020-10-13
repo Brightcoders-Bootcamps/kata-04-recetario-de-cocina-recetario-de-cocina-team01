@@ -32,10 +32,10 @@ export default function Detail({route, navigation}) {
     portions: portions,
   };
   let heart;
-  if(item.section=='TRENDING'){
-    heart=require('../images/like.png');
-  }else{
-    heart=require('../images/gusta-contorno.png');
+  if (item.section == 'TRENDING') {
+    heart = require('../images/like.png');
+  } else {
+    heart = require('../images/gusta-contorno.png');
   }
   const [likeIcon, setIcon] = useState(heart);
   const [fav, setFav] = useState(null);
@@ -43,10 +43,10 @@ export default function Detail({route, navigation}) {
   function changeCategorie() {
     if (item.section == 'TRENDING') {
       setFav(true);
-      heart=require('../images/gusta-contorno.png');
+      heart = require('../images/gusta-contorno.png');
     } else if (item.section == 'FAVOURITES') {
       setFav(false);
-      heart=require('../images/like.png');
+      heart = require('../images/like.png');
     }
     setIcon(heart);
   }
@@ -111,7 +111,7 @@ export default function Detail({route, navigation}) {
               </View>
             )}
             showsVerticalScrollIndicator={false}
-            keyExtractor={(index) => index}
+            keyExtractor={(index) => t + id }
           />
         </View>
       </View>
