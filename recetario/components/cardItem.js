@@ -10,27 +10,39 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+function prueba(props, item) {
+
+  if(item.t.includes(props.searchText)){
+    return (
+      <View style={styles.item}>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => props.gTD(item)}>
+          <Image
+            style={{ height: props.h, width: props.w, borderRadius: 8 }}
+            source={item.ruta}
+          />
+        </TouchableOpacity>
+        <Text style={styles.title}> {item.t} </Text>
+      </View>
+    )
+  }else{
+    return ;
+  }
+  
+}
 
 function CardM(props) {
   return (
     <FlatList
       horizontal={true}
       data={props.data}
-      renderItem={({item, index}) => (
-        <View style={styles.item}>
-          <TouchableOpacity activeOpacity={0.5} onPress={() => props.gTD(item)}>
-            <Image
-              style={{height: props.h, width: props.w, borderRadius: 8}}
-              source={item.ruta}
-            />
-          </TouchableOpacity>
-          <Text style={styles.title}> {item.t} </Text>
-        </View>
+      renderItem={({ item, index }) => (
+        prueba(props, item)
       )}
       showsHorizontalScrollIndicator={false}
-      keyExtractor={(item) =>  props.namesection + item.id}
+      keyExtractor={(item) => props.namesection + item.id}
     />
   );
 }

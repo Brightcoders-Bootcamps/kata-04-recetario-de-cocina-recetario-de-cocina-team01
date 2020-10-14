@@ -25,6 +25,11 @@ let favourites = [];
 function Home({ navigation, route }) {
   const [trending, setTrending] = useState(localReceepes);
   const [favs, setFavs] = useState([]);
+  const [value, onChangeText] = useState('');
+
+  handleChangeText = (text) =>{
+    onChangeText(text)
+  }
 
   React.useEffect(() => {
     if (route.params?.post) {
@@ -56,7 +61,7 @@ function Home({ navigation, route }) {
   }
   return (
     <View style={styles.Padre}>
-      <SearchInput />
+      <SearchInput onchangeFunction={handleChangeText} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.Hijo2}>
           <Text style={styles.TextColor}> TRENDING </Text>
@@ -66,6 +71,7 @@ function Home({ navigation, route }) {
             namesection="TRENDING"
             data={trending}
             gTD={goToDetails}
+            searchText={value}
           />
         </View>
         <View style={styles.Hijo3}>
@@ -76,6 +82,7 @@ function Home({ navigation, route }) {
             namesection="FAVOURITES"
             data={favs}
             gTD={goToDetails}
+            searchText={value}
           />
         </View>
       </ScrollView>

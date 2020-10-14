@@ -14,6 +14,7 @@ class SearchInput extends Component {
             style={{color: 'white', width: '90%'}}
             placeholder="What do you want to eat?"
             placeholderTextColor="#fff"
+            onChangeText={this.props.onchangeFunction}
           />
           <Image
             style={styles.icons}
