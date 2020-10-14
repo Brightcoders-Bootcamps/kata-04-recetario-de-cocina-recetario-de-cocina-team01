@@ -69,7 +69,7 @@ export default function Detail({route, navigation}) {
                 <TouchableOpacity activeOpacity={0.5} onPress={goBack}>
                   <Image
                     style={styles.iconclass}
-                    source={require('../images/cross.png')}
+                    source={require('../images/closed2.png')}
                   />
                 </TouchableOpacity>
               </View>
@@ -80,7 +80,7 @@ export default function Detail({route, navigation}) {
                 ]}>
                 <Image
                   style={[styles.iconclass, {marginRight: 20}]}
-                  source={require('../images/share.png')}
+                  source={require('../images/share2.png')}
                 />
                 <TouchableOpacity activeOpacity={0.5} onPress={changeCategorie}>
                   <Image style={styles.iconclass} source={likeIcon} />
