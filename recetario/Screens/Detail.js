@@ -111,7 +111,7 @@ export default function Detail({route, navigation}) {
               </View>
             )}
             showsVerticalScrollIndicator={false}
-            keyExtractor={(index) => t + id }
+            keyExtractor={(index) => item.ingredient }
           />
         </View>
       </View>

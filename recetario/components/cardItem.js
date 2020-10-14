@@ -13,9 +13,8 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-function prueba(props, item) {
-
-  if(item.t.includes(props.searchText)){
+function itemToRender(props, item) {
+  if(item.t.toLowerCase().includes(props.searchText.toLowerCase())){
     return (
       <View style={styles.item}>
         <TouchableOpacity activeOpacity={0.5} onPress={() => props.gTD(item)}>
@@ -30,7 +29,6 @@ function prueba(props, item) {
   }else{
     return ;
   }
-  
 }
 
 function CardM(props) {
@@ -39,7 +37,7 @@ function CardM(props) {
       horizontal={true}
       data={props.data}
       renderItem={({ item, index }) => (
-        prueba(props, item)
+        itemToRender(props, item)
       )}
       showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => props.namesection + item.id}
