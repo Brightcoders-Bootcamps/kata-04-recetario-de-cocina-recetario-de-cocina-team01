@@ -97,6 +97,9 @@ Al ser reutilizables `List Item` y `Horizontal List`pueden servir tanto para tre
 - Código fuente en Github
 - Incluir en el repositorio la puntuación obtenida (badge) en DeepScan
 - Incluir en el repositorio la puntuación obtenida (badge) en CodeClimate
+
+<a href="https://codeclimate.com/github/Brightcoders-Bootcamps/kata-04-recetario-de-cocina-recetario-de-cocina-team01/maintainability"><img src="https://api.codeclimate.com/v1/badges/ffe941f51508db5f2ca2/maintainability" /></a>
+
 - Documentar en [este archivo](setup/README.md) los pasos necesarios para ejecutar la App
 - [Los commits deben se significativos](https://medium.com/better-programming/you-need-meaningful-commit-messages-d869e44e98d4)
 
