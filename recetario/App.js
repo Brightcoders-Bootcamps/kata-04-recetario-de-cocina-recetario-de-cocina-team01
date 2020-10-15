@@ -121,13 +121,16 @@ const styles = StyleSheet.create({
   },
   Hijo1: {
     flex: 1,
+    
   },
   Hijo2: {
     flex: 1,
     paddingTop: '10%',
+    minHeight:200,
   },
   Hijo3: {
     flex: 1,
+    minHeight:200,
   },
   TextColor: {
     color: '#D920A9',

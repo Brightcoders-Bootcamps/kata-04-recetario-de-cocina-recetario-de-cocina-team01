@@ -13,8 +13,9 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 function itemToRender(props, item) {
-  if(item.t.toLowerCase().includes(props.searchText.toLowerCase())){
+  if (item.t.toLowerCase().includes(props.searchText.toLowerCase())) {
     return (
       <View style={styles.item}>
         <TouchableOpacity activeOpacity={0.5} onPress={() => props.gTD(item)}>
@@ -26,7 +27,7 @@ function itemToRender(props, item) {
         <Text style={styles.title}> {item.t} </Text>
       </View>
     )
-  }else{
+  } else {
     return ;
   }
 }
