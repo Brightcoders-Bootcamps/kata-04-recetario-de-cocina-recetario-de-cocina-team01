@@ -125,5 +125,37 @@ export const datageneral = {
       ruta: require('../images/molletes.jpeg'),
       section: 'TRENDING',
     },
+    {
+      id: '5',
+      t: 'Tlayudas',
+      ingredients: [
+        {
+          ingredient: 'Tlayudas',
+          quantity: '3 pz',
+        },
+        {
+          ingredient: 'Frijol',
+          quantity: '100 g',
+        },
+        {
+          ingredient: 'Tazajo',
+          quantity: '100 g',
+        },
+        {
+          ingredient: 'Quesillo',
+          quantity: '100 g',
+        },
+        {
+          ingredient: 'Repollo',
+          quantity: '1/2 pz',
+        },
+        {
+          ingredient: 'Aguacate',
+          quantity: '1 pz',
+        },
+      ],
+      ruta: require('../images/tlayuda.jpeg'),
+      section: 'TRENDING',
+    },
   ],
 };

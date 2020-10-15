@@ -68,7 +68,7 @@ export default function Detail({route, navigation}) {
               <View style={{flex: 1}}>
                 <TouchableOpacity activeOpacity={0.5} onPress={goBack}>
                   <Image
-                    style={styles.iconclass}
+                    style={styles.iconX}
                     source={require('../images/closed2.png')}
                   />
                 </TouchableOpacity>
@@ -176,4 +176,8 @@ const styles = StyleSheet.create({
     marginTop: '-55%',
     paddingLeft: 15,
   },
+  iconX:{
+    height:50,
+    with:50,
+  }
 });
