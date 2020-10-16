@@ -1,18 +1,12 @@
 import * as React from 'react';
 import {
-  SafeAreaView,
   View,
   FlatList,
   StyleSheet,
   Text,
-  StatusBar,
   Image,
   TouchableOpacity,
-  Button,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
 
 function itemToRender(props, item) {
   if (item.t.toLowerCase().includes(props.searchText.toLowerCase())) {

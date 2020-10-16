@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   View,
-  Button,
   Text,
   Image,
   StyleSheet,
@@ -19,7 +18,6 @@ export default function Detail({route, navigation}) {
     ruta,
     ingredients,
     section,
-    prueba,
     index,
     portions,
   } = route.params;
@@ -178,6 +176,6 @@ const styles = StyleSheet.create({
   },
   iconX:{
     height:50,
-    with:50,
+    width:50,
   }
 });

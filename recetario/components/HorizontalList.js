@@ -1,6 +1,5 @@
 import React from 'react';
-// import CardM from './components/CardM';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, ScrollView, Image } from 'react-native';
+import {  View, FlatList, StyleSheet, Text, StatusBar, ScrollView } from 'react-native';
 
 
 
@@ -20,7 +19,6 @@ const Horizontal = (props) => {
   const renderItem = ({ item }) => (
     <Item 
     title={item.title}
-    // imag={item.imag}
      />
   );
 

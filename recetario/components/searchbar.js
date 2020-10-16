@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Text, TextInput, View, Image, StyleSheet} from 'react-native';
-import {Directions} from 'react-native-gesture-handler';
+import { TextInput, View, Image, StyleSheet} from 'react-native';
 
 class SearchInput extends Component {
   render() {
